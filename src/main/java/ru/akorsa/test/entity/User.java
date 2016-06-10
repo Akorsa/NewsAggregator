@@ -1,6 +1,9 @@
 package ru.akorsa.test.entity;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -10,10 +13,15 @@ public class User {
     @GeneratedValue
     private Integer id;
 
+    @Size(min = 3, message = "Name must be at least 3 characters!")
+    @Column(unique = true)
     private String name;
 
+    @Size(min = 1, message = "Invalid email address!")
+    @Email(message = "Invalid email address!")
     private String email;
 
+    @Size(min = 5, message = "Name must be at least 5 characters!")
     private String password;
 
     private boolean enabled;
@@ -22,7 +30,7 @@ public class User {
     @JoinTable
     private List<Role> roles;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Blog> blogs;
 
     public List<Role> getRoles() {
