@@ -1,6 +1,7 @@
 package ru.akorsa.test.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,6 +14,7 @@ import ru.akorsa.test.repository.BlogRepository;
 import ru.akorsa.test.repository.ItemRepository;
 import ru.akorsa.test.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,6 +32,14 @@ public class BlogService {
     @Autowired
     private ItemRepository itemRepository;
 
+    @Autowired
+    @Qualifier("infoq")
+    private ParserService InfoqParserServiceImpl;
+
+    @Autowired
+    @Qualifier("jcg")
+    private ParserService JCGParserServiceImpl;
+
     // 1 hour = 60 seconds * 60 minutes * 1000
     @Scheduled(fixedDelay = 3600000)
     public void reloadBlogs() {
@@ -39,16 +49,48 @@ public class BlogService {
         }
     }
 
-    public void save(Blog blog, String name) {
+    public void save(Blog blog, String name) throws RssException {
         User user = userRepository.findByName(name);
         blog.setUser(user);
         blogRepository.save(blog);
-        saveItems(blog);
+        if (blog.getIsRss().equals("yes")) {
+            saveItems(blog);
+        } else {
+            saveItemsForBlog(blog);
+        }
+
+    }
+
+    private void saveItemsForBlog(Blog blog) throws RssException {
+        try {
+            List<Item> items = new ArrayList<Item>();
+            if (blog.getUrl().equals("https://www.infoq.com/java/news/")) {
+                items = InfoqParserServiceImpl.getItems(blog.getUrl());
+            } else {
+                if (blog.getUrl().equals("https://www.javacodegeeks.com/")) {
+                    items = JCGParserServiceImpl.getItems(blog.getUrl());
+                } else {
+                    throw new Exception();
+                }
+
+            }
+            for (Item item : items) {
+                Item savedItem = itemRepository.findByBlogAndLink(blog, item.getLink());
+                if (savedItem == null) {
+                    item.setBlog(blog);
+                    itemRepository.save(item);
+                }
+            }
+        } catch (RssException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RssException(e);
+        }
     }
 
     private void saveItems(Blog blog) {
         try {
-            List<Item> items = rssService.getItems(blog.getUrl());
+            List<Item> items = rssService.getItems(blog.getUrlRss());
             for (Item item : items) {
                 Item savedItem = itemRepository.findByBlogAndLink(blog, item.getLink());
                 if (savedItem == null) {

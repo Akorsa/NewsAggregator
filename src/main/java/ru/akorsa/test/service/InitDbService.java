@@ -55,13 +55,13 @@ public class InitDbService {
 
         Blog blog = new Blog();
         blog.setName("DZone (Java)");
-        blog.setUrl("http://feeds.dzone.com/java");
+        blog.setUrlRss("http://feeds.dzone.com/java");
         blog.setUser(userAdmin);
         blogRepository.save(blog);
 
 //        blog = new Blog();
 //        blog.setName("Habr");
-//        blog.setUrl("https://habrahabr.ru/rss/hub/java/");
+//        blog.setUrlRss("https://habrahabr.ru/rss/hub/java/");
 //        blog.setUser(userAdmin);
 //        blogRepository.save(blog);
 

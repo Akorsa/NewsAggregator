@@ -32,7 +32,7 @@
                 <a href="<spring:url value="/blog/remove/${blog.id}.html" />" class="btn btn-danger triggerRemove">remove
                     blog</a>
 
-                <c:out value="${blog.url}"/></p>
+                <c:out value="${blog.urlRss}"/></p>
 
             <table class="table table-bordered table-hover table-striped">
                 <thead>

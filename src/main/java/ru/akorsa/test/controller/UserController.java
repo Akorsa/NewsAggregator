@@ -36,19 +36,10 @@ public class UserController {
         String name = principal.getName();
         model.addAttribute("user", userService.findOneWithBlogs(name));
 
-        List<Blog> blogs = new ArrayList<Blog>();
-        Blog blog = new Blog();
-        blog.setName("JavaCodeGeeks");
-        blog.setUrl("https://www.javacodegeeks.com/");
-
-        blogs.add(blog);
-
-        blog = new Blog();
-        blog.setName("InfoQ");
-        blog.setUrl("https://www.infoq.com/java/news/");
-
-        blogs.add(blog);
-
+        List<String> blogs = new ArrayList<String>();
+        blogs.add("");
+        blogs.add("https://www.javacodegeeks.com/");
+        blogs.add("https://www.infoq.com/java/news/");
         model.addAttribute("sites", blogs);
         return "account";
     }

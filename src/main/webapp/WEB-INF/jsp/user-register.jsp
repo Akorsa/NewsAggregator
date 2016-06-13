@@ -53,7 +53,7 @@
                             required: true,
                             minlength: 3,
                             remote: {
-                                url: "<spring:url value='/register/available.html' />",
+                                urlRss: "<spring:url value='/register/available.html' />",
                                 type: "get",
                                 data: {
                                     username: function () {

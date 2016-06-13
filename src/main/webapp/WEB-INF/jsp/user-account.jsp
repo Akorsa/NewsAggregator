@@ -28,33 +28,31 @@
                             <form:errors path="name"/>
                         </div>
                     </div>
-                    <div class="form-group url">
-                        <label for="url" class="col-sm-2 control-label">URL:</label>
-
-                        <div class="col-sm-10">
-                            <form:input path="url" cssClass="form-control"/>
-                            <form:errors path="url"/>
-                        </div>
-                    </div>
                     <div class="form-group radio-group">
                         <div class="radio col-sm-offset-2">
-                            <label><input type="radio" name="optradio1" id="r1" value="RSS">RSS</label>
+                            <label><form:radiobutton path="isRss" id="r1" value="yes"/>RSS</label>
                         </div>
                         <div class="radio col-sm-offset-2">
-                            <label><input type="radio" name="optradio1" value="Parse">Parse blog</label>
+                            <label><form:radiobutton path="isRss" value="no"/>Parse blog</label>
+                        </div>
+                    </div>
+                    <div class="form-group urlRss">
+                        <label for="urlRss" class="col-sm-2 control-label">URL:</label>
+                        <div class="col-sm-10">
+                            <form:input path="urlRss" cssClass="form-control"/>
+                            <form:errors path="urlRss"/>
                         </div>
                     </div>
                     <div class="form-group list">
                         <label for="sel1" class="col-sm-2 control-label">Choose website:</label>
-
                         <div class="col-sm-10">
-                            <select class="form-control" id="sel1">
+                            <form:select path="url" cssClass="form-control" id="sel1">
                                 <c:forEach items="${sites}" var="site">
-                                    <option value="${site.name}">
-                                            ${site.name}
-                                    </option>
+                                    <form:option value="${site}">
+                                        ${site}
+                                    </form:option>
                                 </c:forEach>
-                            </select>
+                            </form:select>
                         </div>
                     </div>
 
@@ -77,15 +75,13 @@
         $("#r1").prop("checked", true);
         $(".list").hide();
         $('input[type="radio"]').click(function () {
-            if ($(this).attr("value") == "RSS") {
+            if ($(this).attr("value") == "yes") {
                 $(".list").hide();
-                $(".url").show();
-                $(".name").show();
+                $(".urlRss").show();
             }
-            if ($(this).attr("value") == "Parse") {
-                $(".name").hide();
-                $(".url").hide();
+            if ($(this).attr("value") == "no") {
                 $(".list").show();
+                $(".urlRss").hide();
             }
         });
         $(".triggerRemove").click(function (e) {
@@ -100,9 +96,9 @@
                             required: true,
                             minlength: 1
                         },
-                        url: {
+                        urlRss: {
                             required: true,
-                            url: true
+                            urlRss: true
                         },
                     },
                     highlight: function (element) {
@@ -134,7 +130,7 @@
                 <a href="<spring:url value="/blog/remove/${blog.id}.html" />" class="btn btn-danger triggerRemove">remove
                     blog</a>
 
-                <c:out value="${blog.url}"/></p>
+                <c:out value="${blog.urlRss}"/> <c:out value="${blog.url}"/></p>
 
             <table class="table table-bordered table-hover table-striped">
                 <thead>

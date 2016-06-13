@@ -13,12 +13,16 @@ public class Blog {
     @GeneratedValue
     private Integer id;
 
-    @Size(min = 1, message = "Invalid URL!")
+    @URL(message = "Invalid URL!")
+    private String urlRss;
+
     @URL(message = "Invalid URL!")
     private String url;
 
     @Size(min = 1, message = "Name must be at least 1 character!")
     private String name;
+
+    private String isRss;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -33,6 +37,14 @@ public class Blog {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getUrlRss() {
+        return urlRss;
+    }
+
+    public void setUrlRss(String urlRss) {
+        this.urlRss = urlRss;
     }
 
     public String getUrl() {
@@ -65,5 +77,13 @@ public class Blog {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public String getIsRss() {
+        return isRss;
+    }
+
+    public void setIsRss(String isRss) {
+        this.isRss = isRss;
     }
 }
