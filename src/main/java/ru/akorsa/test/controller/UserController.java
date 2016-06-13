@@ -14,6 +14,8 @@ import ru.akorsa.test.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -33,6 +35,21 @@ public class UserController {
     public String account(Model model, Principal principal) {
         String name = principal.getName();
         model.addAttribute("user", userService.findOneWithBlogs(name));
+
+        List<Blog> blogs = new ArrayList<Blog>();
+        Blog blog = new Blog();
+        blog.setName("JavaCodeGeeks");
+        blog.setUrl("https://www.javacodegeeks.com/");
+
+        blogs.add(blog);
+
+        blog = new Blog();
+        blog.setName("InfoQ");
+        blog.setUrl("https://www.infoq.com/java/news/");
+
+        blogs.add(blog);
+
+        model.addAttribute("sites", blogs);
         return "account";
     }
 

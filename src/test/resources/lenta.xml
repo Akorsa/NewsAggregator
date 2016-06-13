@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <language>ru</language>
+        <title>Lenta.ru</title>
+        <description>Новости, статьи, фотографии, видео. Семь дней в неделю, 24 часа в сутки</description>
+        <link>http://lenta.ru</link>
+        <image>
+            <url>http://assets.lenta.ru/small_logo.png</url>
+            <title>Lenta.ru</title>
+            <link>http://lenta.ru</link>
+            <width>134</width>
+            <height>22</height>
+        </image>
+        <atom:link rel="self" type="application/rss+xml" href="http://lenta.ru/rss/top7"/>
+        <item>
+            <guid>http://lenta.ru/news/2016/06/12/gay_bar/</guid>
+            <title>Неизвестный открыл стрельбу и захватил заложников в гей-баре во Флориде</title>
+            <link>http://lenta.ru/news/2016/06/12/gay_bar/</link>
+            <description>
+                <![CDATA[Неизвестный открыл стрельбу в гей-баре Pulse в Орландо, штат Флорида. По данным полиции, пострадали не менее 20 человек. Выстрелы раздались около 02:00 по местному времени. Большинство посетителей, которые находились в баре и на танцполе, успели убежать. Однако стрелок сумел взять несколько человек в заложники.]]>
+            </description>
+            <pubDate>Sun, 12 Jun 2016 11:27:00 +0300</pubDate>
+            <enclosure
+                    url="https://icdn.lenta.ru/images/2016/06/12/11/20160612113259334/pic_e1e590524d73d926cf490ae9a0d8c379.jpg"
+                    length="11647" type="image/jpeg"/>
+            <category>Мир</category>
+        </item>
+        <item>
+            <guid>http://lenta.ru/news/2016/06/12/koshmar/</guid>
+            <title>В СКР рассказали о семье обезглавленной в Белогорске девочки</title>
+            <link>http://lenta.ru/news/2016/06/12/koshmar/</link>
+            <description>
+                <![CDATA[В рамках расследования дела об убийстве двухлетней девочки отцом в Амурской области будет дана правовая оценка действиям местных органов социальной защиты. Как выяснилось, семья, в которой произошло преступление, состояла на учете в органах опеки как неблагополучная, дети неоднократно изымались у родителей.]]>
+            </description>
+            <pubDate>Sun, 12 Jun 2016 11:49:00 +0300</pubDate>
+            <enclosure
+                    url="https://icdn.lenta.ru/images/2016/06/12/10/20160612103340548/pic_ceae7d1b2f20fe5536ad9c4e0a1ee948.jpg"
+                    length="36297" type="image/jpeg"/>
+            <category>Силовые структуры</category>
+        </item>
+        <item>
+            <guid>http://lenta.ru/news/2016/06/12/airport/</guid>
+            <title>В результате взрыва в шанхайском аэропорту пострадали трое</title>
+            <link>http://lenta.ru/news/2016/06/12/airport/</link>
+            <description>
+                <![CDATA[В результате взрыва пиротехники в шанхайском международном аэропорту Пудун пострадали три человека. Об этом сообщает агентство «Синьхуа». Пиротехника находилась в багаже одного из пассажиров. Инцидент произошел возле стойки регистрации. На месте работают сотрудники скорой помощи и полиции.]]>
+            </description>
+            <pubDate>Sun, 12 Jun 2016 11:20:00 +0300</pubDate>
+            <enclosure
+                    url="https://icdn.lenta.ru/images/2016/06/12/11/20160612112251008/pic_994315914abb0353d9be21c93f01ca11.jpg"
+                    length="38245" type="image/jpeg"/>
+            <category>Мир</category>
+        </item>
+        <item>
+            <guid>http://lenta.ru/news/2016/06/12/planefound/</guid>
+            <title>Пилот и пассажир пропавшего на Алтае самолета погибли</title>
+            <link>http://lenta.ru/news/2016/06/12/planefound/</link>
+            <description>
+                <![CDATA[Пропавший на Алтае самолет найден в Усть-Коксинском районе республики,  сообщила официальный представитель Западно-Сибирской транспортной прокуратуры Оксана Горбунова. «Спасатели обнаружили самолет в 40 километрах от села Каргасок. Пилот и пассажир погибли», — сказала она.]]>
+            </description>
+            <pubDate>Sun, 12 Jun 2016 10:34:00 +0300</pubDate>
+            <enclosure
+                    url="https://icdn.lenta.ru/images/2016/06/12/10/20160612103646139/pic_9b536b9c425858351ef77031ba00ce74.jpg"
+                    length="42635" type="image/jpeg"/>
+            <category>Россия</category>
+        </item>
+        <item>
+            <guid>http://lenta.ru/news/2016/06/12/injuredfans/</guid>
+            <title>СМИ подсчитали пострадавших в марсельских столкновениях фанатов</title>
+            <link>http://lenta.ru/news/2016/06/12/injuredfans/</link>
+            <description>
+                <![CDATA[В результате столкновений между английскими и российскими фанатами в Марселе пострадали по меньшей мере 35 человек, четверо находятся в критическом состоянии, все они госпитализированы. Большинство болельщиков получили несерьезные травмы, их жизням ничего не угрожает, они покидают больницы самостоятельно.]]>
+            </description>
+            <pubDate>Sun, 12 Jun 2016 10:28:00 +0300</pubDate>
+            <enclosure
+                    url="https://icdn.lenta.ru/images/2016/06/12/10/20160612100225786/pic_34e0be01d850fa00ad2673d21b605c07.jpg"
+                    length="29575" type="image/jpeg"/>
+            <category>Спорт</category>
+        </item>
+        <item>
+            <guid>http://lenta.ru/news/2016/06/12/face/</guid>
+            <title>Опубликована фотография убийцы певицы Кристины Гримми</title>
+            <link>http://lenta.ru/news/2016/06/12/face/</link>
+            <description>
+                <![CDATA[Полиция Орландо опубликовала в своем микроблоге в Twitter фотографию подозреваемого в убийстве 22-летней участницы американского шоу «Голос» Кристины Гримми. Как стало известно, певицу застрелил 27-летний Кевин Джеймс Лойбл из Сент-Питерсберга (штат Флорида). Он не был знаком с артисткой. ]]>
+            </description>
+            <pubDate>Sun, 12 Jun 2016 10:09:00 +0300</pubDate>
+            <enclosure
+                    url="https://icdn.lenta.ru/images/2016/06/12/10/20160612100408304/pic_6e976f3ebc84307d9f7d67919963f9ac.jpg"
+                    length="13501" type="image/jpeg"/>
+            <category>Культура</category>
+        </item>
+        <item>
+            <guid>http://lenta.ru/news/2016/06/12/kzh/</guid>
+            <title>В Казахстане поймали всех причастных к терактам в Актобе</title>
+            <link>http://lenta.ru/news/2016/06/12/kzh/</link>
+            <description>
+                <![CDATA[В Казахстане задержаны все участники теракта в Актобе, сообщает Комитет национальной безопасности (КНБ) республики. «Актюбинским областным оперативным штабом по борьбе с терроризмом нейтрализованы и задержаны все участники насильственных акций 5 июня в Актобе. Изъято все имевшееся у них оружие», — отметили в КНБ.]]>
+            </description>
+            <pubDate>Sun, 12 Jun 2016 09:18:00 +0300</pubDate>
+            <enclosure
+                    url="https://icdn.lenta.ru/images/2016/06/12/09/20160612091905484/pic_566d658483bdc7a3bc9ae7aa40b30e20.jpg"
+                    length="67135" type="image/jpeg"/>
+            <category>Бывший СССР</category>
+        </item>
+    </channel>
+</rss>

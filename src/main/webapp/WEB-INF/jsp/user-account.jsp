@@ -20,7 +20,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <div class="form-group">
+                    <div class="form-group name">
                         <label for="name" class="col-sm-2 control-label">Name:</label>
 
                         <div class="col-sm-10">
@@ -28,14 +28,36 @@
                             <form:errors path="name"/>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">URL:</label>
+                    <div class="form-group url">
+                        <label for="url" class="col-sm-2 control-label">URL:</label>
 
                         <div class="col-sm-10">
                             <form:input path="url" cssClass="form-control"/>
                             <form:errors path="url"/>
                         </div>
                     </div>
+                    <div class="form-group radio-group">
+                        <div class="radio col-sm-offset-2">
+                            <label><input type="radio" name="optradio1" id="r1" value="RSS">RSS</label>
+                        </div>
+                        <div class="radio col-sm-offset-2">
+                            <label><input type="radio" name="optradio1" value="Parse">Parse blog</label>
+                        </div>
+                    </div>
+                    <div class="form-group list">
+                        <label for="sel1" class="col-sm-2 control-label">Choose website:</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control" id="sel1">
+                                <c:forEach items="${sites}" var="site">
+                                    <option value="${site.name}">
+                                            ${site.name}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+
 
                 </div>
                 <div class="modal-footer">
@@ -52,6 +74,20 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('.nav-tabs a:first').tab('show'); // Select first tab
+        $("#r1").prop("checked", true);
+        $(".list").hide();
+        $('input[type="radio"]').click(function () {
+            if ($(this).attr("value") == "RSS") {
+                $(".list").hide();
+                $(".url").show();
+                $(".name").show();
+            }
+            if ($(this).attr("value") == "Parse") {
+                $(".name").hide();
+                $(".url").hide();
+                $(".list").show();
+            }
+        });
         $(".triggerRemove").click(function (e) {
             e.preventDefault();
             $("#modalRemove .removeBtn").attr("href", $(this).attr("href"));
@@ -103,15 +139,23 @@
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Link</th>
+                    <th>date</th>
+                    <th>item</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${blog.items}" var="item">
                     <tr>
-                        <td><c:out value="${item.title}"/></td>
-                        <td><c:out value="${item.link}"/></td>
+                        <td><c:out value="${item.publishedDate}"/></td>
+                        <td>
+                            <strong>
+                                <a href="<c:out value="${item.link}"/>" target="_blank">
+                                    <c:out value="${item.title}"></c:out>
+                                </a>
+                            </strong>
+                            <br/>
+                                ${item.description}
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

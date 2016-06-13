@@ -5,7 +5,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.akorsa.test.entity.Blog;
-import ru.akorsa.test.entity.Item;
 import ru.akorsa.test.entity.Role;
 import ru.akorsa.test.entity.User;
 import ru.akorsa.test.repository.BlogRepository;
@@ -15,7 +14,6 @@ import ru.akorsa.test.repository.UserRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -56,23 +54,16 @@ public class InitDbService {
         userRepository.save(userAdmin);
 
         Blog blog = new Blog();
-        blog.setName("Habr");
-        blog.setUrl("https://habrahabr.ru/rss/hub/java/");
+        blog.setName("DZone (Java)");
+        blog.setUrl("http://feeds.dzone.com/java");
         blog.setUser(userAdmin);
         blogRepository.save(blog);
 
-        Item item1 = new Item();
-        item1.setBlog(blog);
-        item1.setTitle("first");
-        item1.setLink("http://www.habrahabr.com");
-        item1.setPublishedDate(new Date());
-        itemRepository.save(item1);
+//        blog = new Blog();
+//        blog.setName("Habr");
+//        blog.setUrl("https://habrahabr.ru/rss/hub/java/");
+//        blog.setUser(userAdmin);
+//        blogRepository.save(blog);
 
-        Item item2 = new Item();
-        item2.setBlog(blog);
-        item2.setTitle("second");
-        item2.setLink("http://www.habrahabr.com");
-        item2.setPublishedDate(new Date());
-        itemRepository.save(item2);
     }
 }

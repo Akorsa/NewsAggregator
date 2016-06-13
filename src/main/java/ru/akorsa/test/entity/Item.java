@@ -1,5 +1,7 @@
 package ru.akorsa.test.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,13 +12,18 @@ public class Item {
     @GeneratedValue
     private Integer id;
 
+    @Column(length = 1000)
     private String title;
 
+    @Lob
+    @Type(type = "org.hibernate.type.StringClobType")
+    @Column(length = Integer.MAX_VALUE)
     private String description;
 
     @Column(name = "published_date")
     private Date publishedDate;
 
+    @Column(length = 1000)
     private String link;
 
     @ManyToOne
