@@ -1,5 +1,6 @@
 package ru.akorsa.test.service;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,6 +20,8 @@ import java.util.List;
 
 @Service
 public class BlogService {
+
+    private static final Logger log = Logger.getLogger(BlogService.class);
 
     @Autowired
     private BlogRepository blogRepository;
@@ -49,14 +52,18 @@ public class BlogService {
         }
     }
 
-    public void save(Blog blog, String name) throws RssException {
+    public void save(Blog blog, String name)  {
         User user = userRepository.findByName(name);
         blog.setUser(user);
         blogRepository.save(blog);
         if (blog.getIsRss().equals("yes")) {
             saveItems(blog);
         } else {
-            saveItemsForBlog(blog);
+            try {
+                saveItemsForBlog(blog);
+            } catch (RssException e) {
+                log.error(e.getMessage());
+            }
         }
 
     }
@@ -82,7 +89,7 @@ public class BlogService {
                 }
             }
         } catch (RssException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         } catch (Exception e) {
             throw new RssException(e);
         }
@@ -99,7 +106,7 @@ public class BlogService {
                 }
             }
         } catch (RssException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
