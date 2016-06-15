@@ -31,6 +31,13 @@ public class Blog {
     @OneToMany(mappedBy = "blog", cascade = CascadeType.REMOVE)
     private List<Item> items;
 
+    public Blog(String name) {
+        this.name = name;
+    }
+
+    public Blog() {
+    }
+
     public Integer getId() {
         return id;
     }

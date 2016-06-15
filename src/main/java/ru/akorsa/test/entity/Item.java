@@ -1,11 +1,13 @@
 package ru.akorsa.test.entity;
 
 import org.hibernate.annotations.Type;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Document(indexName = "item")
 public class Item {
 
     @Id
