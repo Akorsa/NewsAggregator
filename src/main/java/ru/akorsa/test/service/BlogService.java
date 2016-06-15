@@ -3,10 +3,14 @@ package ru.akorsa.test.service;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.query.IndexQuery;
+import org.springframework.data.elasticsearch.core.query.IndexQueryBuilder;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import ru.akorsa.test.ESrepository.ItemESRepository;
 import ru.akorsa.test.entity.Blog;
 import ru.akorsa.test.entity.Item;
 import ru.akorsa.test.entity.User;
@@ -36,12 +40,20 @@ public class BlogService {
     private ItemRepository itemRepository;
 
     @Autowired
+    private ItemESRepository itemESRepository;
+
+    @Autowired
     @Qualifier("infoq")
     private ParserService InfoqParserServiceImpl;
 
     @Autowired
+    private ElasticsearchTemplate elasticsearchTemplate;
+
+    @Autowired
     @Qualifier("jcg")
     private ParserService JCGParserServiceImpl;
+
+    List<IndexQuery> indexQueries = new ArrayList<IndexQuery>();
 
     // 1 hour = 60 seconds * 60 minutes * 1000
     @Scheduled(fixedDelay = 3600000)
@@ -86,8 +98,12 @@ public class BlogService {
                 if (savedItem == null) {
                     item.setBlog(blog);
                     itemRepository.save(item);
+                    IndexQuery indexQuery1 = new IndexQueryBuilder().withObject(item).build();
+                    indexQueries.add(indexQuery1);
+                    //itemESRepository.index(item);
                 }
             }
+            elasticsearchTemplate.bulkIndex(indexQueries);
         } catch (RssException e) {
             log.error(e.getMessage());
         } catch (Exception e) {
@@ -103,8 +119,12 @@ public class BlogService {
                 if (savedItem == null) {
                     item.setBlog(blog);
                     itemRepository.save(item);
+                    IndexQuery indexQuery1 = new IndexQueryBuilder().withObject(item).build();
+                    indexQueries.add(indexQuery1);
+                    //itemESRepository.index(item);
                 }
             }
+            elasticsearchTemplate.bulkIndex(indexQueries);
         } catch (RssException e) {
             log.error(e.getMessage());
         }

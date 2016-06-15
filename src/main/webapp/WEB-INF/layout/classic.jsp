@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<spring:url value="/" />">JBA</a>
+                <a class="navbar-brand" href="<spring:url value="/" />">News Aggregator</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -67,6 +67,12 @@
                         <li><a href="<spring:url value="/logout" />">Logout</a></li>
                     </security:authorize>
                 </ul>
+                <form class="navbar-form navbar-left" role="search" action="/search.html" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" name="searchString">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </div>

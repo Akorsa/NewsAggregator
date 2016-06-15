@@ -19,6 +19,12 @@
         <put-attribute name="current" value="users"/>
     </definition>
 
+    <definition name="search" extends="common">
+        <put-attribute name="title" value="Users"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/search.jsp"/>
+        <put-attribute name="current" value="search"/>
+    </definition>
+
     <definition name="user-detail" extends="common">
         <put-attribute name="title" value="User detail"/>
         <put-attribute name="body" value="/WEB-INF/jsp/user-detail.jsp"/>
