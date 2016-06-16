@@ -119,12 +119,15 @@ public class BlogService {
                 if (savedItem == null) {
                     item.setBlog(blog);
                     itemRepository.save(item);
+
+
                     IndexQuery indexQuery1 = new IndexQueryBuilder().withObject(item).build();
                     indexQueries.add(indexQuery1);
                     //itemESRepository.index(item);
                 }
             }
             elasticsearchTemplate.bulkIndex(indexQueries);
+            elasticsearchTemplate.refresh(Item.class, true);
         } catch (RssException e) {
             log.error(e.getMessage());
         }

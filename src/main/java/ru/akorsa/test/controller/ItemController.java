@@ -27,7 +27,9 @@ public class ItemController {
     @RequestMapping(value = "/search")
     public ModelAndView search(@RequestParam("searchString") String searchString) {
 
-        SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("description", searchString)).build();
+        // List<Item> items = itemService.findByTitleContaining(searchString);
+
+        SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", searchString)).build();
         List<Item> items = elasticsearchTemplate.queryForList(searchQuery, Item.class);
 
         return new ModelAndView("search", "items", items);
